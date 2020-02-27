@@ -1,0 +1,7 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(459,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (Project1_2DScene.vcxproj, SDLProject.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  main.cpp
+D:\Spring 2020\Game Programming\Project 2 - Pong\main.cpp(191,8): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\Spring 2020\Game Programming\Project 2 - Pong\main.cpp(194,8): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\Spring 2020\Game Programming\Project 2 - Pong\main.cpp(197,8): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\Spring 2020\Game Programming\Project 2 - Pong\main.cpp(244,91): warning C4305: 'initializing': truncation from 'double' to 'float'
+  SDLProject.vcxproj -> D:\Spring 2020\Game Programming\Project 2 - Pong\Debug\Project2_Pong.exe
