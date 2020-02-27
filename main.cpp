@@ -46,28 +46,28 @@ void Initialize() {
     displayWindow = SDL_CreateWindow("PONG!", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, SDL_WINDOW_OPENGL);
     SDL_GLContext context = SDL_GL_CreateContext(displayWindow);
     SDL_GL_MakeCurrent(displayWindow, context);
-    
+
 #ifdef _WINDOWS
     glewInit();
 #endif
-    
+
     glViewport(0, 0, 640, 480);
-    
+
     program.Load("shaders/vertex.glsl", "shaders/fragment.glsl");
-    
+
     viewMatrix = glm::mat4(1.0f);
     modelMatrix = glm::mat4(1.0f);
     player1Matrix = glm::mat4(1.0f);
     player2Matrix = glm::mat4(1.0f);
     ballMatrix = glm::mat4(1.0f);
     projectionMatrix = glm::ortho(-5.0f, 5.0f, -3.75f, 3.75f, -1.0f, 1.0f);
-    
+
     program.SetProjectionMatrix(projectionMatrix);
     program.SetViewMatrix(viewMatrix);
     program.SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-    
+
     glUseProgram(program.programID);
-    
+
     glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
 
 }
@@ -198,8 +198,10 @@ void Update() {
         ball_movement.y = -ball_movement.y;
     }
     ball_position += ball_movement * ball_speed * deltaTime;
-    if (ball_position.y > 5) { ball_position.y = 5; }
-    if (ball_position.y < -5) { ball_position.y = -5; }
+    if (fabs(ball_position.x) >= 4.8) {
+        ball_movement = glm::vec3(0);
+    }
+
 
 
     modelMatrix = glm::mat4(1.0f);
@@ -266,14 +268,14 @@ void Shutdown() {
 
 int main(int argc, char* argv[]) {
     Initialize();
-    
+
     while (gameIsRunning) {
         ProcessInput();
         Update();
         Render();
-        
+
     }
-    
+
     Shutdown();
     return 0;
 }
